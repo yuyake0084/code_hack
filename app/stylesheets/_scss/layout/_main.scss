@@ -1,0 +1,20 @@
+* {
+  box-sizing: border-box;
+}
+body,
+html {
+  min-width: 320px;
+  height: 100%;
+  font-family: 'Rubik', sans-serif;
+}
+
+.c-main {
+  height: 100%;
+  padding-right: 30%;
+  transition: .5s;
+
+  &.is-passive {
+    padding-right: 0;
+    transition: .5s;
+  }
+}

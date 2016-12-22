@@ -1,0 +1,19 @@
+.c-header {
+  display: flex;
+  align-items: baseline;
+  padding: 15px 20px;
+  border-bottom: 2px solid $brandSubColor;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, .3);
+  background: {
+    color: $brandColor;
+  }
+}
+.c-header__head {
+  float: left;
+  width: 50%;
+  color: $brandSubColor;
+  letter-spacing: 3px;
+  font: {
+    size: 20px;
+  }
+}

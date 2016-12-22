@@ -1,0 +1,51 @@
+.c-loginForm__container {
+  width: 300px;
+  margin: 0 auto;
+  background-color: #fff;
+  box-shadow: 0 2px 30px rgba(0, 0, 0, .3);
+  border-radius: 10px;
+}
+.c-loginForm {
+  padding: 15px;
+}
+.c-loginForm__head {
+  padding: 6px 10px;
+  color: #666;
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+  background-color: #efefef;
+}
+.c-loginForm__input__id,
+.c-loginForm__input__password {
+  width: 100%;
+  padding: 10px 10px 10px 40px;
+  border-radius: 4px;
+  border: 1px solid #ddd;
+  background: {
+    size: 20px;
+    repeat: no-repeat;
+    position: 10px center;
+  }
+}
+.c-loginForm__input__id {
+  background-image: url("../images/ico/ico_id.png");
+}
+.c-loginForm__input__password {
+  margin-top: 10px;
+  background-image: url("../images/ico/ico_password.png");
+}
+.c-loginForm__btn__container {
+  width: 200px;
+  margin: 20px auto 0;
+}
+.c-loginForm__btn {
+  display: block;
+  width: 100%;
+  color: #fff;
+  padding: 10px 40px;
+  font-size: 16px;
+  text-align: center;
+  cursor: pointer;
+  border-radius: 6px;
+  background-color: $brandSubColor;
+}

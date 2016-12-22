@@ -1,0 +1,48 @@
+.c-editor__container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 72px;
+  right: 0;
+  width: 30%;
+  height: calc(100% - 72px);
+  transition: .5s;
+
+  &.is-passive {
+    position: fixed;
+    right: -30%;
+    transition: .5s;
+  }
+}
+.c-editor__detail__container {
+  height: 33.333%;
+
+  &.is-js {
+    position: relative;
+  }
+}
+.c-editor__head {
+  padding: 12px 20px;
+  color: $brandSubColor;
+  background: {
+    color: #232323;
+  }
+}
+.c-editor__head__run {
+  position: absolute;
+  top: 6px;
+  right: 20px;
+  padding: 4px 10px;
+  color: $brandSubColor;
+  font-size: 14px;
+  border: 2px solid $brandSubColor;
+  border-radius: 6px;
+
+  &:hover {
+    cursor: pointer;
+  }
+}
+#editor {
+  height: calc(100% - 40px)!important;
+  // min-height: 33.333%;
+}

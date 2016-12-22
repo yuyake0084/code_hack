@@ -1,0 +1,18 @@
+.c-preview__container {
+  display: flex;
+  flex-wrap: nowrap;
+  width: 90%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.c-preview__inner {
+  width: 100%;
+  max-height: 600px;
+  margin: 20px auto 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .3);
+  border-radius: 6px;
+  overflow-y: scroll;
+  background: {
+    color: #fff;
+  }
+}
