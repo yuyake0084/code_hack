@@ -2,7 +2,7 @@
   <img src="http://res.cloudinary.com/dzknndz2n/image/upload/v1481536987/icon_512_2x_z8lg4p.png" width="200" alt="">
 
   <h1>Code Hack</h1>
-  <h3>this application is <strong>Observer</strong> pattern.</h3>
+  <h3>this application is Markup Editor.</h3>
 </div>
 
 ## Install
@@ -22,4 +22,4 @@ $ npm run dev
 
 ### Observer Pattern
 
-エディタの値の変更を観測してプレビュー画面にリアルタイムで反映されます。
+Changes in editor values ​​are observed and reflected on the preview screen in real time.
