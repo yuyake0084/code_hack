@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "gulp",
     "pack": "npm run pack:osx",
-    "pack:osx": "electron-packager ./code_hack CodeHack --out=/Applications --platform=darwin --arch=x64 --version=1.4.10 --icon=./code_hack/Icon.icns --protocol-name=codehack-protocol --protocol=CodeHack"
+    "pack:osx": "electron-packager . CodeHack --out=dist --platform=darwin --arch=x64 --version=1.4.10 --icon=./Icon.icns --protocol-name=codehack-protocol --protocol=CodeHack"
   },
   "repository": {
     "type": "git",

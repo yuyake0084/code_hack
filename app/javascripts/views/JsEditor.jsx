@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import AceEditor from 'react-ace';
+import brace from 'brace';
 import 'brace/mode/javascript';
 import 'brace/theme/monokai';
 

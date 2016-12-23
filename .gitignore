@@ -3,3 +3,5 @@ node_modules
 
 app/stylesheets/app.css
 app/javascripts/bundle.js
+
+dist
