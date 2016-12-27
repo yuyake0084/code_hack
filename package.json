@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "gulp",
     "pack": "npm run pack:osx",
-    "pack:osx": "electron-packager . CodeHack --out=dist --platform=darwin --arch=x64 --version=1.4.10 --icon=./Icon.icns --protocol-name=codehack-protocol --protocol=CodeHack"
+    "pack:osx": "electron-packager . CodeHack --out=dist --platform=darwin --arch=x64 --version=1.4.13 --icon=./Icon.icns --protocol-name=codehack-protocol --protocol=CodeHack"
   },
   "repository": {
     "type": "git",
@@ -38,11 +38,12 @@
     "babel-plugin-transform-react-jsx": "^6.8.0",
     "babel-register": "^6.18.0",
     "brace": "^0.9.0",
-    "electron": "^1.4.11",
+    "electron": "^1.4.13",
     "electron-packager": "^8.2.0",
     "express": "^4.14.0",
     "flux": "^3.1.0",
     "marked": "^0.3.6",
+    "menu": "^0.2.5",
     "path": "^0.12.7",
     "react": "^15.3.2",
     "react-ace": "^4.0.0",

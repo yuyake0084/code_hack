@@ -3,36 +3,12 @@
 const path = require('path');
 const Join = path.join;
 const { app, Menu, BrowserWindow } = require('electron');
+const menuList = require('./config/menuList');
 const options = {
   width: 1200,
   height: 900
 };
-const template = [
-  {
-    label: 'File',
-    submenu: [
-      {
-        label: 'Save',
-        accelerator: 'CmdOrCtrl+S',
-        click() {
-          console.log('hoge');
-        }
-      }
-    ]
-  },
-  {
-    label: 'Edit',
-    submenu: [
-      {
-        role: 'selectall'
-      }
-    ]
-  }
-];
-const menu = Menu.buildFromTemplate(template);
 let mainWindow = null;
-
-Menu.setApplicationMenu(menu);
 
 app.on('window-all-closed', () => {
   if (process.platform !== 'darwin') {
@@ -51,6 +27,36 @@ app.on('will-finish-launching', () => {
 function appReady() {
   return new Promise((resolve, reject) => {
     app.on('ready', createAppWindow);
+    Menu.setApplicationMenu(
+  Menu.buildFromTemplate(
+   [
+     {
+       label: 'App',
+       submenu: [
+         {
+           role: 'quit'
+         }
+       ]
+     },
+     {
+       label: 'Comment',
+       submenu: [
+         {
+           label: 'Clear',
+           click(item, focusedWindow) {
+             dialog.showMessageBox({
+               type: 'info',
+               message: 'Message!',
+               detail: 'message detail.',
+               buttons: ['OK']
+             })
+           }
+         }
+       ]
+     }
+   ]
+  )
+)
   })
 }
 
