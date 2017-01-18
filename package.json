@@ -2,9 +2,10 @@
   "name": "code_hack",
   "version": "1.0.0",
   "description": "<div align=\"center\">   <img src=\"http://res.cloudinary.com/dzknndz2n/image/upload/v1481536987/icon_512_2x_z8lg4p.png\" width=\"200\" alt=\"\">",
-  "main": "./app.js",
+  "main": "./app/app.js",
   "scripts": {
-    "dev": "gulp",
+    "start": "node ./bin/www",
+    "dev": "gulp && node ./bin/www",
     "pack": "npm run pack:osx",
     "pack:osx": "electron-packager . CodeHack --out=dist --platform=darwin --arch=x64 --version=1.4.13 --icon=./Icon.icns --protocol-name=codehack-protocol --protocol=CodeHack"
   },
@@ -41,15 +42,17 @@
     "electron": "^1.4.13",
     "electron-packager": "^8.2.0",
     "express": "^4.14.0",
+    "express-react-views": "^0.10.2",
     "flux": "^3.1.0",
     "marked": "^0.3.6",
     "menu": "^0.2.5",
+    "mysql": "^2.12.0",
     "path": "^0.12.7",
     "react": "^15.3.2",
     "react-ace": "^4.0.0",
     "react-dom": "^15.3.2",
     "react-router": "^3.0.0",
-    "sequelize": "^3.27.0",
+    "sequelize": "^3.29.0",
     "superagent": "^3.0.0"
   },
   "browserify-shim": {

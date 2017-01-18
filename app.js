@@ -1,89 +1,67 @@
-'use strict';
-
+const express = require('express');
 const path = require('path');
-const Join = path.join;
-const { app, Menu, BrowserWindow } = require('electron');
-const menuList = require('./config/menuList');
+const favicon = require('serve-favicon');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+
+const routes = require('./routes/index');
+const users = require('./routes/users');
+
+const app = express();
+
+// view engine setup
 const options = {
-  width: 1200,
-  height: 900
-};
-let mainWindow = null;
-
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit();
+  beautify: true,
+  babel: {
+    presets: ['react', 'es2015']
   }
-})
+}
+app.set('views', `${__dirname}/views`);
+app.set('view engine', 'jsx');
+app.engine('jsx', require('express-react-views').createEngine(options));
 
-app.on('will-finish-launching', () => {
-  // For mac OS
-  app.on('open-url', (e, url) => {
-    e.preventDefault();
-    return url;
-  })
+// uncomment after placing your favicon in /public
+//app.use(favicon(__dirname + '/public/favicon.ico'));
+app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(cookieParser());
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.use('/', routes);
+app.use('/users', users);
+
+// catch 404 and forward to error handler
+app.use(function(req, res, next) {
+  var err = new Error('Not Found');
+  err.status = 404;
+  next(err);
 });
 
-function appReady() {
-  return new Promise((resolve, reject) => {
-    app.on('ready', createAppWindow);
-    Menu.setApplicationMenu(
-  Menu.buildFromTemplate(
-   [
-     {
-       label: 'App',
-       submenu: [
-         {
-           role: 'quit'
-         }
-       ]
-     },
-     {
-       label: 'Comment',
-       submenu: [
-         {
-           label: 'Clear',
-           click(item, focusedWindow) {
-             dialog.showMessageBox({
-               type: 'info',
-               message: 'Message!',
-               detail: 'message detail.',
-               buttons: ['OK']
-             })
-           }
-         }
-       ]
-     }
-   ]
-  )
-)
-  })
-}
+// error handlers
 
-function handleOpenUri() {
-  return new Promise((resolve, reject) => {
-    app.on('will-finish-launching', () => {
-      app.on('open-url', (e, url) => {
-        e.preventDefault();
-        resolve(url);
-      });
+// development error handler
+// will print stacktrace
+if (app.get('env') === 'development') {
+  app.use(function(err, req, res, next) {
+    res.status(err.status || 500);
+    res.render('error', {
+      message: err.message,
+      error: err
     });
   });
 }
 
-function createAppWindow() {
-  return new Promise((resolve, reject) => {
-    mainWindow = new BrowserWindow(options);
-    mainWindow.on('closed', () => mainWindow = null);
-    mainWindow.loadURL(`file://${Join(app.getAppPath(), 'app', 'index.html')}`);
-    mainWindow.webContents.on('did-finish-load', resolve);
+// production error handler
+// no stacktraces leaked to user
+app.use(function(err, req, res, next) {
+  res.status(err.status || 500);
+  res.render('error', {
+    message: err.message,
+    error: {}
   });
-}
+});
 
-function execute(uri) {
-  BrowserWindow.webContents.executeJavaScript(`handle(${ JSON.stringfy({ uri }) })`);
-}
 
-Promise
-  .all([appReady(), handleOpenUri()])
-  .then(([, uri]) => execute(uri));
+module.exports = app;
